@@ -2,22 +2,11 @@
 
 // vueUse
 import { useScroll } from '@vueuse/core'
-import { getCategoryAPI } from '@/apis/layout.js';
-import { ref } from 'vue';
-import { onMounted } from 'vue';
+import { useCategoryStore } from '@/stores/category';
 const { y } = useScroll(window)
 
-const categoryList =ref([])
-const getCategory = async ()=>{
-
-  const res= await getCategoryAPI()
-  console.log(res)
-  categoryList.value = res.result
-}
-
-onMounted(()=>{
-  getCategory()
-})
+//使用pinia中的数据
+const categoryStore = useCategoryStore();
 
 </script>
 
@@ -25,13 +14,14 @@ onMounted(()=>{
   <div class="app-header-sticky" :class="{ show: y > 78 }">
     <div class="container">
       <RouterLink class="logo" to="/" />
-      <!-- 导航区域 -->
-      <div class="right">
-        <li class="home" v-for="item in categoryList" :key="item.id">
+      <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
-        <!-- <RouterLink to="/">品牌</RouterLink>
-        <RouterLink to="/">专题</RouterLink> -->
+      <!-- 导航区域 -->
+      <div class="right">
+
+        <RouterLink to="/">品牌</RouterLink>
+        <RouterLink to="/">专题</RouterLink>
       </div>
     </div>
   </div>
@@ -59,33 +49,47 @@ onMounted(()=>{
     transform: none;
     opacity: 1;
   }
+  li::marker {
+    content: '';
+  }
+  a{
+    font-size: 16px;
+    line-height: 32px;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    list-style-type: none;
+    margin-left: 25px;
+    margin-right: 25px;
+    &:hover {
+        color: $xtxColor;
+        border-bottom: 1px solid $xtxColor;
+      }
+  }
 
   .container {
     display: flex;
     align-items:center;
+    padding-right: 100px;
   }
 
   .logo {
-    width: 200px;
+    width: 100%;
     height: 80px;
     background: url("@/assets/images/logo.png") no-repeat right 2px;
     background-size: 160px auto;
   }
 
-
   .right {
     width: 900px;
     display: flex;
     text-align: center;
-    padding-left: 40px;
+
     border-left: 2px solid $xtxColor;
-
-
-
     li {
-    margin-right: 40px;
-    width: 38px;
-    text-align: center;
+      display: inline-block;
+      width: 38px;
+      text-align: center;
 
     a {
       font-size: 16px;
@@ -105,9 +109,7 @@ onMounted(()=>{
     }
     }
 
-  li::marker {
-    content: '';
-  }
+
   }
 }
 </style>
