@@ -13,7 +13,7 @@ httpInstance.interceptors.request.use(config => {
   Promise.reject(e)
 })
 
-// axios响应式拦截器
+// axios响应拦截器
 httpInstance.interceptors.response.use(res => res.data, e => {
   return Promise.reject(e)
 })
