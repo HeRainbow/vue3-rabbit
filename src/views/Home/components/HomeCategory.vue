@@ -32,8 +32,6 @@
   import { useCategoryStore } from '@/stores/category';
 
   const categoryStore = useCategoryStore();
-
-  console.log(categoryStore)
 </script>
 
 
