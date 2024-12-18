@@ -6,29 +6,13 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import { useIntersectionObserver } from '@vueuse/core'
-
+//引入懒加载指令插件并且注册
+import { lazyPlugin } from './directives'
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-
+app.use(lazyPlugin)
 app.mount('#app')
-//定义全局指令
-app.directive('img-lazy',{
-  mounted(el,binding){
-    //el：指令绑定到的DOM元素。这可以用于直接操作 。
-    //binding：一个对象
-    console.log(el,binding.value)
-    useIntersectionObserver(
-      el,
-      ([entry]) => {
-        console.log(entry.isIntersecting)
-        if(entry.isIntersecting){
-          el.src = binding.value
-        }
 
-  },
-)
-}})

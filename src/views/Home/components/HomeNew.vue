@@ -13,19 +13,19 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue';
-  import HomePanel from './HomePanel.vue';
-  import { findNewAPI } from '@/apis/home';
+import { onMounted, ref } from 'vue';
+import HomePanel from './HomePanel.vue';
+import { findNewAPI } from '@/apis/home';
 
-  //获取数据
-  const newList = ref([])
-  const getNewList = async()=>{
-    const res = await findNewAPI()
-    newList.value = res.result
-  }
-  onMounted(()=>{
-    getNewList()
-  })
+//获取数据
+const newList = ref([])
+const getNewList = async () => {
+  const res = await findNewAPI()
+  newList.value = res.result
+}
+onMounted(() => {
+  getNewList()
+})
 </script>
 
 
