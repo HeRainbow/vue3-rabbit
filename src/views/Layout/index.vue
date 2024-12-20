@@ -5,6 +5,8 @@
     <LayoutFixed />
     <LayoutNav />
     <LayoutHeader />
+    <!-- 添加key属性，确保组件重新渲染 -->
+    <!-- <RouterView :key="$route.fullPath" /> -->
     <RouterView />
     <LayoutFooter />
 
