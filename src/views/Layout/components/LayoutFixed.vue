@@ -15,8 +15,8 @@ const categoryStore = useCategoryStore();
     <div class="container">
       <RouterLink class="logo" to="/" />
       <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-          <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
-        </li>
+        <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+      </li>
       <!-- 导航区域 -->
       <div class="right">
 
@@ -29,6 +29,11 @@ const categoryStore = useCategoryStore();
 
 
 <style scoped lang='scss'>
+.active {
+  color: $xtxColor;
+  border-bottom: 1px solid $xtxColor;
+}
+
 .app-header-sticky {
   width: 100%;
   height: 80px;
@@ -49,10 +54,12 @@ const categoryStore = useCategoryStore();
     transform: none;
     opacity: 1;
   }
+
   li::marker {
     content: '';
   }
-  a{
+
+  a {
     font-size: 16px;
     line-height: 32px;
     height: 32px;
@@ -61,15 +68,16 @@ const categoryStore = useCategoryStore();
     list-style-type: none;
     margin-left: 25px;
     margin-right: 25px;
+
     &:hover {
-        color: $xtxColor;
-        border-bottom: 1px solid $xtxColor;
-      }
+      color: $xtxColor;
+      border-bottom: 1px solid $xtxColor;
+    }
   }
 
   .container {
     display: flex;
-    align-items:center;
+    align-items: center;
     padding-right: 100px;
   }
 
@@ -86,27 +94,29 @@ const categoryStore = useCategoryStore();
     text-align: center;
 
     border-left: 2px solid $xtxColor;
+
     li {
       display: inline-block;
       width: 38px;
       text-align: center;
 
-    a {
-      font-size: 16px;
-      line-height: 32px;
-      height: 32px;
-      display: inline-block;
-      list-style-type: none;
-      &:hover {
-        color: $xtxColor;
-        border-bottom: 1px solid $xtxColor;
-      }
-    }
+      a {
+        font-size: 16px;
+        line-height: 32px;
+        height: 32px;
+        display: inline-block;
+        list-style-type: none;
 
-    .active {
-      color: $xtxColor;
-      border-bottom: 1px solid $xtxColor;
-    }
+        &:hover {
+          color: $xtxColor;
+          border-bottom: 1px solid $xtxColor;
+        }
+      }
+
+      // .active {
+      //   color: $xtxColor;
+      //   border-bottom: 1px solid $xtxColor;
+      // }
     }
 
 
