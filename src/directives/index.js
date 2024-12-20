@@ -7,11 +7,9 @@ export const lazyPlugin = {
       mounted(el, binding) {
         //el：指令绑定到的DOM元素。这可以用于直接操作 。
         //binding：一个对象
-        console.log(el, binding.value)
         const {stop} = useIntersectionObserver(
           el,
           ([entry]) => {
-            console.log(entry.isIntersecting)
             if (entry.isIntersecting) {
               el.src = binding.value
               stop();
