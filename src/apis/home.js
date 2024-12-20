@@ -9,9 +9,14 @@ export function getXXXAPI(){
 
 
 //设置轮播图banner的API接口
-export function getBannerAPI(){
+export function getBannerAPI(params = {}){
+  //默认为1 商品为2
+  const {distributionSite = '1'}= params
   return httpInstance({
-    url:'/home/banner'
+    url:'/home/banner',
+    params:{
+      distributionSite
+    }
   })
 }
 
