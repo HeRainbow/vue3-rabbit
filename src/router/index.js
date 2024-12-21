@@ -3,6 +3,7 @@ import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
+import SubCategory from '@/views/SubCategory/index.vue'
 // 创建路由实例
 const router = createRouter({
   // 配置路由模式 - history模式
@@ -20,6 +21,10 @@ const router = createRouter({
       {
         path:'category/:id',  // 分类路由，:id为动态路由参数
         component:Category  // 分类组件
+      },
+      {
+        path:'category/sub/:id',  // 分类路由，:id为动态路由参数
+        component:SubCategory  // 分类组件
       }
     ]
   },{
